@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran - Kaizye Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00c9ff, #92fe9d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .header p {
+            color: #ccc;
+            font-size: 16px;
+        }
+
+        .payment-method {
+            margin-bottom: 25px;
+        }
+
+        .payment-method h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #e0e0e0;
+        }
+
+        .payment-option {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .payment-option:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .payment-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .dana-icon {
+            background: linear-gradient(135deg, #00c9ff, #0088cc);
+        }
+
+        .qris-icon {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        }
+
+        .payment-details {
+            flex: 1;
+        }
+
+        .payment-details h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .payment-details p {
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #00c9ff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .warning {
+            background: rgba(255, 193, 7, 0.15);
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .warning h3 {
+            color: #ffc107;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .warning h3::before {
+            content: "⚠";
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        .admin-contact {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-contact a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0088cc, #00c9ff);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 201, 255, 0.3);
+        }
+
+        .admin-contact a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 201, 255, 0.5);
+        }
+
+        .admin-contact a::before {
+            content: "💬";
+            margin-right: 8px;
+        }
+
+        .qris-image {
+            width: 100%;
+            max-width: 250px;
+            margin: 15px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .payment-option {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Pembayaran Kaizye Store</h1>
+            <p>Pilih metode pembayaran yang tersedia</p>
+        </div>
+        
+        <div class="payment-method">
+            <h2>Metode Pembayaran</h2>
+            
+            <div class="payment-option">
+                <div class="payment-icon dana-icon">D</div>
+                <div class="payment-details">
+                    <h3>Transfer Dana</h3>
+                    <p>088229286129</p>
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard('088229286129')">Salin</button>
+            </div>
+            
+            <div class="payment-option">
+                <div class="payment-icon qris-icon">Q</div>
+                <div class="payment-details">
+                    <h3>QRIS</h3>
+                    <p>Scan kode QR di bawah</p>
+                </div>
+            </div>
+            
+            <img src="https://files.catbox.moe/iwygx9.jpg" alt="QRIS Code" class="qris-image">
+        </div>
+        
+        <div class="warning">
+            <h3>Penting!</h3>
+            <p>Jika sudah melakukan transfer, segera hubungi admin dan kirimkan screenshot bukti pembayaran.</p>
+        </div>
+        
+        <div class="admin-contact">
+            <a href="https://t.me/KAIZYE_STORE" target="_blank">Hubungi Admin</a>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Nomor DANA berhasil disalin: ' + text);
+            }, function(err) {
+                console.error('Gagal menyalin teks: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
